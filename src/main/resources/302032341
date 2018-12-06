@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<legalEntity ogrn="302032341" inn="777198" kpp="23409">
+    <entityType>org</entityType>
+    <status>1</status>
+    <name>
+        <fullName>Общество с ограниченной ответственностью "Чук и Гек" при правительстве Российской Федерации</fullName>
+        <shortName>ООО "Чук и Гек"</shortName>
+    </name>
+</legalEntity>
