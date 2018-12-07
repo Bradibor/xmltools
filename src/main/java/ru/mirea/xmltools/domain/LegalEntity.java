@@ -28,9 +28,11 @@ public class LegalEntity {
     private Name name;
     @XmlElement()
     private List<Okved> okveds;
-    @XmlElement()
+    @XmlElementWrapper(name = "founders")
+    @XmlElement(name = "founder")
     private List<Founder> founders;
-    @XmlElement()
+    @XmlElementWrapper(name = "founders")
+    @XmlElement(name = "founder")
     private List<Leader> leaders;
     @XmlJavaTypeAdapter(StatusAdapter.class)
     private Status status;

@@ -8,7 +8,9 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
+import java.math.BigDecimal;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class LegalEntityRepository {
@@ -41,5 +43,28 @@ public class LegalEntityRepository {
             e.printStackTrace();
             return Optional.empty();
         }
+    }
+
+    public static void main(String[] args) {
+        LegalEntity.Founder founder = new LegalEntity.Founder() {{
+            setOgrn(23L);
+            setCapitalPercent(new BigDecimal(50));
+        }};
+        LegalEntity.Founder founder2 = new LegalEntity.Founder() {{
+            setOgrn(24L);
+            setCapitalPercent(new BigDecimal(50));
+        }};
+        LegalEntity legalEntity = new LegalEntity() {{
+            setOgrn(1L);
+            setInn("378");
+            setKpp("2");
+            setEntityType(EntityType.organizaion);
+            setFounders(new ArrayList<Founder>() {{
+                add(founder);
+                add(founder2);
+            }});
+        }};
+        LegalEntityRepository legalEntityRepository = new LegalEntityRepository("C:\\Users\\bradi\\IdeaProjects\\xmltools\\src\\main\\resources");
+        legalEntityRepository.save(legalEntity);
     }
 }

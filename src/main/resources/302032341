@@ -6,4 +6,9 @@
         <fullName>Общество с ограниченной ответственностью "Чук и Гек" при правительстве Российской Федерации</fullName>
         <shortName>ООО "Чук и Гек"</shortName>
     </name>
+    <founders>
+        <founder>
+            <ogrn>758</ogrn>
+        </founder>
+    </founders>
 </legalEntity>
