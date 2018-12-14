@@ -15,7 +15,7 @@
         </okved>
     </okveds>
     <founders>
-        <founder ogrn="727437273434" main="7727374">
+        <founder ogrn="727437273434" inn="7727374">
             <name>
                 <full_name>Общество с ограниченной ответственностью "Альбатрос"</full_name>
                 <short_name>ООО "Альбатрос"</short_name>
@@ -26,7 +26,7 @@
                 <percent>50</percent>
             </capital>
         </founder>
-        <founder main="84235452">
+        <founder inn="84235452">
             <name>
                 <full_name>Кирюхин Анатолий Вячеславович</full_name>
             </name>
@@ -38,7 +38,7 @@
         </founder>
     </founders>
     <leaders>
-        <leader ogrn="7984375345" main="9873542">
+        <leader ogrn="7984375345" inn="9873542">
             <name>
                 <full_name>Иванов Петр Алексеевич</full_name>
             </name>
