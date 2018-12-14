@@ -1,14 +1,15 @@
 <?xml version="1.0" ?>
-<organization ogrn="349032434134" inn="77988074235" kpp="23409">
+<organization inn="77988074235" kpp="23409">
+    <ogrn>349032434135</ogrn>
     <name>
         <full_name>Общество с ограниченной ответственностью "Чук и Гек" при правительстве Российской Федерации</full_name>
         <short_name>ООО "Чук и Гек"</short_name>
     </name>
     <okveds>
-        <okved version="2001" main="true">
+        <main_okved>
             <code>01.25.4</code>
             <name>Разведение оленей</name>
-        </okved>
+        </main_okved>
         <okved version="2001" main="false">
             <code>24.17</code>
             <name>Производство синтетического каучука</name>

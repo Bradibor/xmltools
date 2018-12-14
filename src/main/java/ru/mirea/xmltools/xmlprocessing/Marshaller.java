@@ -86,7 +86,7 @@ public class Marshaller {
                 if (founder.getOgrn() != null)
                     xmlStreamWriter.writeAttribute("ogrn", founder.getOgrn().toString());
                 if (founder.getInn() != null)
-                    xmlStreamWriter.writeAttribute("main", founder.getInn().toString());
+                    xmlStreamWriter.writeAttribute("inn", founder.getInn().toString());
                 writeName(founder.getName());
                 writeTag("entity_type", founder.getType().name());
                 writeCapital(founder.getCapital());
@@ -106,7 +106,7 @@ public class Marshaller {
                 if (leader.getOgrn() != null)
                     xmlStreamWriter.writeAttribute("ogrn", leader.getOgrn().toString());
                 if (leader.getInn() != null)
-                    xmlStreamWriter.writeAttribute("main", leader.getInn().toString());
+                    xmlStreamWriter.writeAttribute("inn", leader.getInn().toString());
                 writeName(leader.getName());
                 writeTag("entity_type", leader.getType().name());
                 writeTag("position_name", leader.getPositionName());
