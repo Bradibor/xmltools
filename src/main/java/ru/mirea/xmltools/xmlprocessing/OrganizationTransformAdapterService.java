@@ -52,10 +52,11 @@ public class OrganizationTransformAdapterService extends OrganizationService {
     @Override
     public void save(Organization org) {
         try {
-            OutputStream outTemp = new FileOutputStream(new File("C:\\Users\\bradi\\IdeaProjects\\xmltools\\src\\main\\resources\\tempOut.xml"));
+            File tempOut = new File("C:\\Users\\bradi\\IdeaProjects\\xmltools\\src\\main\\resources\\tempOut.xml");
+            OutputStream outTemp = new FileOutputStream(tempOut);
             marshaller.marshal(outTemp, org);
             StreamSource styleSource = new StreamSource(stylesheetOut);
-            InputStream is = new FileInputStream(new File("C:\\Users\\bradi\\IdeaProjects\\xmltools\\src\\main\\resources\\tempOut.xml"));
+            InputStream is = new FileInputStream(tempOut);
             StreamSource dataSource = new StreamSource(is);
             Transformer transformer = TransformerFactory.newInstance().newTransformer(styleSource);
             OutputStream out = new FileOutputStream(new File("C:\\Users\\bradi\\IdeaProjects\\xmltools\\src\\main\\resources\\"+org.getOgrn()+".xml"));
