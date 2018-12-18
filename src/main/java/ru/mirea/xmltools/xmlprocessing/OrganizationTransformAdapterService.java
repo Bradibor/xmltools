@@ -28,7 +28,8 @@ public class OrganizationTransformAdapterService extends OrganizationService {
         this.stylesheetOut = stylesheetOut;
     }
 
-    public Optional<Organization> getCustomByOgrn(Long ogrn) {
+    @Override
+    public Optional<Organization> getByOgrn(Long ogrn) {
         File file = Paths.get(workingDir, ogrn.toString() + ".xml").toFile();
         try {
             StreamSource styleSource = new StreamSource(stylesheetIn);
@@ -48,7 +49,8 @@ public class OrganizationTransformAdapterService extends OrganizationService {
         return Optional.empty();
     }
 
-    public void saveCustomByOgrn(Organization org) {
+    @Override
+    public void save(Organization org) {
         try {
             OutputStream outTemp = new FileOutputStream(new File("C:\\Users\\bradi\\IdeaProjects\\xmltools\\src\\main\\resources\\tempOut.xml"));
             marshaller.marshal(outTemp, org);
@@ -71,8 +73,8 @@ public class OrganizationTransformAdapterService extends OrganizationService {
                 "C:\\Users\\bradi\\IdeaProjects\\xmltools\\src\\main\\resources",
                 new File("C:\\Users\\bradi\\IdeaProjects\\xmltools\\src\\main\\resources\\transformerIn.xsl"),
                 new File("C:\\Users\\bradi\\IdeaProjects\\xmltools\\src\\main\\resources\\transformerOut.xsl"));
-        val res = service.getCustomByOgrn(349032434135L);
+        val res = service.getByOgrn(349032434135L);
         System.out.println(res);
-        service.saveCustomByOgrn(res.get());
+        service.save(res.get());
     }
 }

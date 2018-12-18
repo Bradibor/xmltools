@@ -4,8 +4,10 @@ import lombok.val;
 import ru.mirea.xmltools.domain.Organization;
 import ru.mirea.xmltools.xmlprocessing.Marshaller;
 import ru.mirea.xmltools.xmlprocessing.OrganizationService;
+import ru.mirea.xmltools.xmlprocessing.OrganizationTransformAdapterService;
 import ru.mirea.xmltools.xmlprocessing.Unmarshaller;
 
+import java.io.File;
 import java.io.PrintStream;
 import java.util.Optional;
 import java.util.Scanner;
@@ -15,7 +17,21 @@ public class Application {
         final Scanner in = new Scanner(System.in);
         System.out.println("enter working dir: ");
         final String workingDir = in.nextLine();
-        final OrganizationService legalEntityRepository = new OrganizationService(new Marshaller(), new Unmarshaller(), workingDir);
+        System.out.println("use special xml format? (y/n)");
+        OrganizationService orgService = null;
+        switch (in.nextLine()) {
+            case "y": orgService = new OrganizationService(new Marshaller(), new Unmarshaller(), workingDir); break;
+            case "n": {
+                System.out.println("enter input xslt template path:");
+                final String templateIn = in.nextLine();
+                System.out.println("enter output xslt template path:");
+                final String templateOut = in.nextLine();
+                orgService = new OrganizationTransformAdapterService(
+                        new Marshaller(), new Unmarshaller(), workingDir,
+                        new File(templateIn), new File(templateOut));
+            }
+            default: break;
+        }
         System.out.println("enter ogrn to edit: ");
         final Long ogrn = Optional.of(in.nextLine()).filter(s->!s.isEmpty()).map(Long::valueOf).orElse(null);
 
@@ -24,7 +40,7 @@ public class Application {
             System.out.println("creating new entry");
             org = new Organization();
         } else {
-            val orgOpt = legalEntityRepository.getByOgrn(ogrn);
+            val orgOpt = orgService.getByOgrn(ogrn);
             org = orgOpt.orElseGet(() -> new Organization() {{
                 System.out.println("legal entity not found - creating new entry");
                 setOgrn(ogrn);
@@ -57,7 +73,7 @@ public class Application {
         }
         System.out.println("save changes? (y/n)");
         switch (in.nextLine()) {
-            case "y": legalEntityRepository.save(org);
+            case "y": orgService.save(org);
             case "n":
             default: break;
         }
