@@ -2,42 +2,31 @@
 
 <xsl:stylesheet
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-        version="1.0"
->
-    <xsl:output method="html"/>
+        version="1.0">
+    <!--<xsl:output method="html"/>-->
 
     <xsl:template match="/organization">
-        <Output>
-            <xsl:attribute name="Attribute">
-                <xsl:value-of select="/organization/ogrn"/>
+        <organization inn="{@inn}" kpp="{@kpp}">
+            <xsl:attribute name="ogrn">
+                <xsl:value-of select="ogrn"/>
             </xsl:attribute>
-        </Output>
+            <xsl:apply-templates/>
+        </organization>
     </xsl:template>
 
-    <!--<xsl:template match="/ARTICLE/TITLE">-->
-        <!--<h1 align="center"> <xsl:apply-templates/> </h1>-->
-    <!--</xsl:template>-->
+    <xsl:template match="@* | node()">
+        <xsl:copy>
+            <xsl:apply-templates select="@* | node()"/>
+        </xsl:copy>
+    </xsl:template>
 
-    <!--&lt;!&ndash; Top Level Heading &ndash;&gt;-->
-    <!--<xsl:template match="/ARTICLE/SECT">-->
-        <!--<h2> <xsl:apply-templates select="text()|B|I|U|DEF|LINK"/> </h2>-->
-        <!--<xsl:apply-templates select="SECT|PARA|LIST|NOTE"/>-->
-    <!--</xsl:template>-->
+    <xsl:template match="/okveds/main_okved">
+        <okved inn="{@inn}" kpp="{@kpp}">
+            <xsl:attribute name="main">
+                <xsl:value-of select="true"/>
+            </xsl:attribute>
+        </okved>
+    </xsl:template>
 
-    <!--&lt;!&ndash; Second-Level Heading &ndash;&gt;-->
-    <!--<xsl:template match="/ARTICLE/SECT/SECT">-->
-        <!--<h3> <xsl:apply-templates select="text()|B|I|U|DEF|LINK"/> </h3>-->
-        <!--<xsl:apply-templates select="SECT|PARA|LIST|NOTE"/>-->
-    <!--</xsl:template>-->
-
-    <!--&lt;!&ndash; Third-Level Heading &ndash;&gt;-->
-    <!--<xsl:template match="/ARTICLE/SECT/SECT/SECT">-->
-        <!--<xsl:message terminate="yes">Error: Sections can only be nested 2 deep.</xsl:message>-->
-    <!--</xsl:template>-->
-
-    <!--&lt;!&ndash; Paragraph &ndash;&gt;-->
-    <!--<xsl:template match="PARA">-->
-        <!--<p><xsl:apply-templates/></p>-->
-    <!--</xsl:template>-->
 
 </xsl:stylesheet>
