@@ -21,8 +21,6 @@
         </xsl:copy>
     </xsl:template>
 
-
-
     <xsl:template match="/organization/okveds/okved">
         <xsl:choose>
             <xsl:when test="@main = 'true'">

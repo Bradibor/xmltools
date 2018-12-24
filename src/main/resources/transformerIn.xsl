@@ -19,7 +19,7 @@
 
     <xsl:template match="/organization/ogrn"/>
 
-    <xsl:template match="/organization/okveds/main_okved">
+    <xsl:template match="/organization/okveds/okved_main">
         <okved version="2001" main="true">
             <xsl:copy-of select="node()"/>
         </okved>
