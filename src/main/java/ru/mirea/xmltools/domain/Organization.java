@@ -18,6 +18,8 @@ public class Organization {
     private List<Founder> founders;
     private List<Leader> leaders;
     private Status status;
+    private String descriptionPath;
+    private String desctiption;
 
     @Data
     public static class Name {
@@ -98,6 +100,7 @@ public class Organization {
     @Override
     public String toString() {
         return "Организация\n" +
+                Optional.ofNullable(this.desctiption).orElse("НЕТ ОПИСАНИЯ") + "\n" +
                 Optional.ofNullable(this.name).map(Name::getFullName).orElse("НЕТ ДАННЫХ О НАЗВАНИИ") +
                 " (" + Optional.ofNullable(this.name).map(Name::getShortName).orElse("НЕТ ДАННЫХ О НАЗВАНИИ") + ")" +
                 "\nСтатус:" + Optional.ofNullable(status).map(Object::toString).orElse("НЕТ ДАННЫХ") +

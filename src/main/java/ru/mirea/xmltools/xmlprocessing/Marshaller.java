@@ -23,6 +23,7 @@ public class Marshaller {
                 xmlStreamWriter.writeAttribute("ogrn", org.getOgrn().toString());
                 xmlStreamWriter.writeAttribute("inn", org.getInn().toString());
                 xmlStreamWriter.writeAttribute("kpp", org.getKpp().toString());
+                writeDescription(org.getDescriptionPath());
                 writeName(org.getName());
                 writeOkveds(org.getOkveds());
                 writeFounders(org.getFounders());
@@ -33,6 +34,15 @@ public class Marshaller {
         } catch (XMLStreamException e) {
             e.printStackTrace();
         }
+    }
+
+    private void writeDescription(String path) throws XMLStreamException {
+        xmlStreamWriter.writeStartElement("description");
+        xmlStreamWriter.writeAttribute("xmlns",  "http://www.w3.org/1999/xlink", "xlink", "http://www.w3.org/1999/xlink");
+        xmlStreamWriter.writeAttribute("xlink",  "http://www.w3.org/1999/xlink", "type", "simple");
+        xmlStreamWriter.writeAttribute("xlink",  "http://www.w3.org/1999/xlink", "href", path);
+        xmlStreamWriter.writeAttribute("xlink",  "http://www.w3.org/1999/xlink", "show", "embed");
+        xmlStreamWriter.writeEndElement();
     }
 
     private void writeOkveds(List<Organization.Okved> okveds) throws XMLStreamException {

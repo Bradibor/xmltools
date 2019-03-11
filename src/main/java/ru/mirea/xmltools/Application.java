@@ -6,7 +6,10 @@ import ru.mirea.xmltools.xmlprocessing.Marshaller;
 import ru.mirea.xmltools.xmlprocessing.OrganizationService;
 import ru.mirea.xmltools.xmlprocessing.Unmarshaller;
 
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -40,6 +43,19 @@ public class Application {
         if(org.getKpp() == null) {
             setKpp(org, System.out, in);
         }
+
+        org.setDesctiption(
+                Optional.ofNullable(org.getDescriptionPath())
+                .map(path->{
+                    try {
+                        return new String(Files.readAllBytes(Paths.get(workingDir, path)));
+                    } catch (IOException e) {
+                        System.out.println("Could not read description from file: " + workingDir + path);
+                    }
+                    return null;
+                }).orElse(null)
+        );
+
         System.out.println(org);
         System.out.println("press any to continue, x to exit...");
         while (!in.nextLine().equals("x")) {

@@ -56,6 +56,10 @@ public class Unmarshaller {
                         Optional.ofNullable(this.getLeaders()).ifPresent(org::setLeaders);
                     } else if ("status".equals(startElement.getName().getLocalPart())) {
                         status = true;
+                    } else if ("description".equals(startElement.getName().getLocalPart())) {
+                        String descPath = startElement.getAttributeByName(new QName("http://www.w3.org/1999/xlink", "href")).getValue();
+                        org.setDescriptionPath(descPath);
+
                     }
                 } else if (event.isCharacters()) {
                     Characters chars = event.asCharacters();
