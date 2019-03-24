@@ -44,18 +44,6 @@ public class Application {
             setKpp(org, System.out, in);
         }
 
-        org.setDesctiption(
-                Optional.ofNullable(org.getDescriptionPath())
-                .map(path->{
-                    try {
-                        return new String(Files.readAllBytes(Paths.get(workingDir, path)));
-                    } catch (IOException e) {
-                        System.out.println("Could not read description from file: " + workingDir + path);
-                    }
-                    return null;
-                }).orElse(null)
-        );
-
         System.out.println(org);
         System.out.println("press any to continue, x to exit...");
         while (!in.nextLine().equals("x")) {
@@ -77,9 +65,6 @@ public class Application {
             case "n":
             default: break;
         }
-//        C:\\Users\\bradi\\IdeaProjects\\xmltools\\src\\main\\resources
-//        12308454325
-//        349032434134
     }
 
     private static void setOgrn(Organization org, PrintStream out, Scanner in) {

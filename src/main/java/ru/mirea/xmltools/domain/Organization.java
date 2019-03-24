@@ -39,6 +39,11 @@ public class Organization {
         private Boolean main;
         private String code;
         private String name;
+
+        @Override
+        public String toString() {
+            return "ОКВЭД " + code + " " + name;
+        }
     }
 
     @Data
@@ -63,10 +68,14 @@ public class Organization {
     public static class Capital {
         private Long size;
         private BigDecimal percent;
+        private String pathToDictionary;
+        private String xPathExpression;
+        private String sizeValue;
+        private String currency = "";
 
         @Override
         public String toString() {
-            return Optional.ofNullable(size).map(Objects::toString).orElse("НЕТ ДАННЫХ") +
+            return Optional.ofNullable(size).map(Objects::toString).map(size->size + currency).orElse("НЕТ ДАННЫХ") +
                     " (" + Optional.ofNullable(percent).map(Objects::toString).orElse("НЕТ ДАННЫХ") + ")";
         }
     }
@@ -104,6 +113,7 @@ public class Organization {
                 Optional.ofNullable(this.name).map(Name::getFullName).orElse("НЕТ ДАННЫХ О НАЗВАНИИ") +
                 " (" + Optional.ofNullable(this.name).map(Name::getShortName).orElse("НЕТ ДАННЫХ О НАЗВАНИИ") + ")" +
                 "\nСтатус:" + Optional.ofNullable(status).map(Object::toString).orElse("НЕТ ДАННЫХ") +
+                "\nОсновной ОКВЭД: " + okveds.stream().filter(Okved::getMain).findFirst().map(Okved::toString).orElse("НЕТ ДАННЫХ ОБ ОКВЭД") +
                 "\nОГРН:" + Optional.ofNullable(ogrn).map(Object::toString).orElse("НЕТ ДАННЫХ") +
                 "; ИНН=" + Optional.ofNullable(inn).map(Object::toString).orElse("НЕТ ДАННЫХ") +
                 "; КПП=" + Optional.ofNullable(kpp).map(Object::toString).orElse("НЕТ ДАННЫХ") +

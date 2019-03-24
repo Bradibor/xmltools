@@ -228,7 +228,17 @@ public class Unmarshaller {
                 StartElement startElement = event.asStartElement();
                 String elementName = startElement.getName().getLocalPart();
                 switch (elementName) {
-                    case "size": size = true; break;
+                    case "size": {
+                        size = true;
+                        Optional<String> hrefAttr =  Optional.ofNullable(startElement.getAttributeByName(new QName("http://www.w3.org/1999/xlink", "href")))
+                                .map(Attribute::getValue);
+                        hrefAttr.map(s->s.split("#")).ifPresent(sa->{
+                            if (sa.length > 1) {
+                                capital.setPathToDictionary(sa[0]);
+                                capital.setXPathExpression(Optional.ofNullable(sa[1]).map(s->s.replaceFirst("xpointer\\((.*)\\)", "$1")).orElse(null));
+                            }
+                        });
+                    } break;
                     case "percent": percent = true; break;
                     default: break;
                 }
