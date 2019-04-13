@@ -82,13 +82,15 @@ public class Marshaller {
             Long size = capital.getSize();
             BigDecimal percent = capital.getPercent();
             if (size != null) {
-                xmlStreamWriter.writeStartElement("description");
-                xmlStreamWriter.writeAttribute("xmlns",  "http://www.w3.org/1999/xlink", "xlink", "http://www.w3.org/1999/xlink");
-                xmlStreamWriter.writeAttribute("xlink",  "http://www.w3.org/1999/xlink", "type", "simple");
-                xmlStreamWriter.writeAttribute("xlink",  "http://www.w3.org/1999/xlink", "href",
-                        capital.getPathToDictionary() +
-                                "#xpointer(" +
-                                capital.getXPathExpression() + ")");
+                xmlStreamWriter.writeStartElement("size");
+                if(capital.getPathToDictionary() != null && capital.getXPathExpression() != null) {
+                    xmlStreamWriter.writeAttribute("xmlns",  "http://www.w3.org/1999/xlink", "xlink", "http://www.w3.org/1999/xlink");
+                    xmlStreamWriter.writeAttribute("xlink",  "http://www.w3.org/1999/xlink", "type", "simple");
+                    xmlStreamWriter.writeAttribute("xlink",  "http://www.w3.org/1999/xlink", "href",
+                            capital.getPathToDictionary() +
+                                    "#xpointer(" +
+                                    capital.getXPathExpression() + ")");
+                }
                 xmlStreamWriter.writeCharacters(size.toString());
                 xmlStreamWriter.writeEndElement();
                 writeTag("size", size.toString());

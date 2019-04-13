@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -72,6 +73,7 @@ public class Organization {
         private String xPathExpression;
         private String sizeValue;
         private String currency = "";
+        private Map<String, String> availableCurrencies;
 
         @Override
         public String toString() {

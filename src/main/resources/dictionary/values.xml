@@ -1,4 +1,4 @@
 <dictionary>
-    <entity id="rub" value="₽"/>
     <entity id="usd" value="$"/>
+    <entity id="rub" value="₽"/>
 </dictionary>
