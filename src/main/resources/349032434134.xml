@@ -1,1 +1,52 @@
-<?xml version="1.0" ?><organization ogrn="349032434134" inn="77988074235" kpp="23409"><description xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="\descriptions\349032434134.txt" xlink:show="embed"></description><name><full_name>Общество с ограниченной ответственностью </full_name><short_name>ООО </short_name></name><okveds><okved version="2001" main="true"><code>01.25.4</code><name>Производство синтетического каучука</name></okved><okved version="2001" main="false"><code>24.17</code><name>Производство синтетического каучука</name></okved></okveds><founders><founder ogrn="727437273434"><name><full_name>Общество с ограниченной ответственностью </full_name><short_name>ООО </short_name></name><entity_type>org</entity_type><capital><size>5000</size><size>5000</size><percent>50</percent></capital></founder><founder><name><full_name>Кирюхин Анатолий Вячеславович</full_name></name><entity_type>ip</entity_type><capital><size xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="dictionary/values.xml#xpointer(/dictionary/entity[@id = 'rub']/@value)">5000</size><size>5000</size><percent>50</percent></capital></founder></founders><leaders><leader ogrn="7984375345"><name><full_name>Иванов Петр Алексеевич</full_name></name><entity_type>fiz</entity_type><position_name>Президент</position_name></leader></leaders><status>active</status></organization>
+<?xml version="1.0" ?>
+<organization inn="77988074235" kpp="23409" ogrn="349032434134">
+    <description xlink:href="\descriptions\349032434134.txt" xlink:show="embed" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink"/>
+    <name>
+        <full_name>Общество с ограниченной ответственностью </full_name>
+        <short_name>ООО </short_name>
+    </name>
+    <okveds>
+        <okved main="true" version="2001">
+            <code>01.25.4</code>
+            <name>Производство синтетического каучука</name>
+        </okved>
+        <okved main="false" version="2001">
+            <code>24.17</code>
+            <name>Производство синтетического каучука</name>
+        </okved>
+    </okveds>
+    <founders>
+        <founder ogrn="727437273434">
+            <name>
+                <full_name>Общество с ограниченной ответственностью </full_name>
+                <short_name>ООО </short_name>
+            </name>
+            <entity_type>org</entity_type>
+            <capital>
+                <size>5000</size>
+                <size>5000</size>
+                <percent>50</percent>
+            </capital>
+        </founder>
+        <founder>
+            <name>
+                <full_name>Кирюхин Анатолий Вячеславович</full_name>
+            </name>
+            <entity_type>ip</entity_type>
+            <capital>
+                <size xlink:href="dictionary/values.xml#xpointer(/dictionary/entity[@id = 'rub']/@value)" xlink:type="simple" xmlns:xlink="http://www.w3.org/1999/xlink">5000</size>
+                <percent>50</percent>
+            </capital>
+        </founder>
+    </founders>
+    <leaders>
+        <leader ogrn="7984375345">
+            <name>
+                <full_name>Иванов Петр Алексеевич</full_name>
+            </name>
+            <entity_type>fiz</entity_type>
+            <position_name>Президент</position_name>
+        </leader>
+    </leaders>
+    <status>active</status>
+</organization>
